@@ -1,0 +1,42 @@
+<!--
+ - Created by vershov on 30.01.2020.
+ -->
+
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,forceCommunity:availableForAllPageTypes,flexipage:availableForAllPageTypes,lightning:isUrlAddressable" access="global" description="Store"  controller="StoreController">
+    
+    <aura:attribute name="accountId" type="String"/>
+    <aura:attribute name="url" type="String"/>
+    <aura:attribute name="pageReference" type="Object"/>
+    <aura:attribute name="isAvailableCallCenter" type="Boolean" />
+
+    <lightning:navigation aura:id="navService"/>
+
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+
+    <div class="store" onscroll="{!c.alerta}">
+        <div class="store__catalog">
+            <aura:if isTrue="{!v.isAvailableCallCenter}">
+                <div class="call-center">
+                    <a href="{!v.url}">
+                        <lightning:button variant="brand" label="online center" title="Brand action"/>
+                    </a>  
+                </div>
+            </aura:if>
+            <c:StoreCatalog accountId="{!v.accountId}" />
+        </div>
+        <div aura:id="store__basket__container" class="store__basket__container">
+            <div class="mobile" onclick="{!c.clickStore}"></div>
+            <div aura:id="store__basket"  class="store__basket">
+                <c:StoreBasket accountId="{!v.accountId}"/>
+            </div>
+        </div>        
+    </div>
+    
+    <div class="shoppingCart" onclick="{!c.showShoppingCart}">
+        <img src="{!$Resource.shoppingCartMobile}" alt=""/>
+    </div>
+    <div class="onTop" onclick="{!c.onTop}">
+        <img src="{!$Resource.onTopArrow}" alt=""/>
+    </div>
+
+</aura:component>

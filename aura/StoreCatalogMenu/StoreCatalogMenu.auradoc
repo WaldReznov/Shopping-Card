@@ -1,0 +1,10 @@
+<!--
+ - Created by vershov on 04.02.2020.
+ -->
+
+<aura:documentation>
+    <aura:description>Documentation for StoreCatalogMenu</aura:description>
+    <aura:example name="StoreCatalogMenu" ref="StoreCatalogMenu" label="StoreCatalogMenu">
+        Example for StoreCatalogMenu
+    </aura:example>
+</aura:documentation>

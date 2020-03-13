@@ -1,0 +1,10 @@
+<!--
+ - Created by vershov on 04.02.2020.
+ -->
+
+<aura:documentation>
+    <aura:description>Documentation for StoreCatalogItem</aura:description>
+    <aura:example name="StoreCatalogItem" ref="StoreCatalogItem" label="StoreCatalogItem">
+        Example for StoreCatalogItem
+    </aura:example>
+</aura:documentation>

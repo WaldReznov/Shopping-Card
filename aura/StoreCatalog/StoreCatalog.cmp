@@ -1,0 +1,100 @@
+<!--
+ - Created by vershov on 30.01.2020.
+ -->
+
+<aura:component description="StoreCatalog" controller="StoreCatalogController">
+
+    <aura:attribute name="accountId" type="String" />
+
+    <aura:attribute name="data" type="Object" />
+    <aura:attribute name="sortedData" type="Object" />
+    <aura:attribute name="currentData" type="List" />
+    <aura:attribute name="currentProducts" type="List" />
+    <aura:attribute name="currentType" type="String" />
+    <aura:attribute name="menu" type="List" />
+    <aura:attribute name="selectedMenu" type="String" />
+    <aura:attribute name="indexOfData" type="Integer" default="0"/>
+    <aura:attribute name="search" type="String" default=""/>
+    <aura:attribute name="pageSize" type="Integer" default="10" />
+
+<!-- pagination -->
+
+    <aura:attribute name="currentStartNumber" type="Integer" default="1"/>
+    <aura:attribute name="currentEndNumber" type="Integer"/>
+    <aura:attribute name="currentDataSize" type="Integer"/>
+    <aura:attribute name="productsSize" type="Integer" />
+    <aura:attribute name="numberOfPages" type="Integer" />
+    <aura:attribute name="currentPage" type="Integer" default="1"/>
+
+<!-- pagination -->
+
+    <!-- menu -->
+    <aura:attribute name="activeMenuItem" type="Integer" default="0"/>
+
+    <aura:handler event="c:StoreInitializeComponent" action="{!c.doInit}"/>
+
+    <div class="catalog__container">
+
+<!--        <c:StoreCatalogSort />-->
+
+
+        <div class="sort">
+        
+            <div class="search" onkeyup="{! c.changeSearch }">
+                <lightning:input
+                        aura:id="enter-search"
+                        name="enter-search"
+                        placeholder="search..."
+                        type="search"
+                />
+            </div>
+
+            <div class="sort__item">
+                <c:StoreCatalogMenu aura:id="catalogMenu" activeMenuItem="{!v.activeMenuItem}" changeType="{!c.setType}" selectedMenu="{!v.selectedMenu}" menu="{!v.menu}" />
+    
+            <lightning:select aura:id="recordPerPage" class="sort__item__item" name="recordPerPage" label="Records per page" onchange="{! c.changeRecordPerPage }">
+                <option value="10">10</option>
+                <option value="20">20</option>
+                <option value="30">30</option>
+                <option value="40">40</option>
+                <option value="50">50</option>
+                <option value="60">60</option>
+                <option value="70">70</option>
+                <option value="80">80</option>
+                <option value="90">90</option>
+                <option value="100">100</option>
+            </lightning:select>
+            </div>
+        </div>
+
+        <div class="catalog" onscroll="{!c.alerta}">
+            <aura:iteration items="{!v.currentProducts}" var="dataItem">
+                <div class="catalog-item">
+                    <aura:if isTrue="{!dataItem.url == null}">
+                        <c:StoreCatalogItem accountId="{!v.accountId}" productId="{!dataItem.productId}" name="{!dataItem.name}" price="{!dataItem.unitPrice}" pictureUrl="{!$Resource.YellowWokap}"/>
+                        <aura:set attribute="else">
+                            <c:StoreCatalogItem accountId="{!v.accountId}" productId="{!dataItem.productId}" name="{!dataItem.name}" price="{!dataItem.unitPrice}" pictureUrl="{!dataItem.url}"/>
+                        </aura:set>
+                    </aura:if>
+                </div>
+            </aura:iteration>
+        </div>
+
+        <div class="pagination">
+            <p>{!v.currentStartNumber}-{!v.currentEndNumber} of {!v.productsSize} | Page {!v.currentPage} of {!v.numberOfPages} </p>
+           <div class="pagination-action">
+            <lightning:button variant="brand" label="prev" title="prev" onclick="{! c.paginationPrev }"/>
+            <lightning:button variant="brand" label="next" title="next" onclick="{! c.paginationNext }"/>
+           </div>
+
+        </div>
+    </div>
+
+    <!-- <div class="shoppingCart">
+        <img src="{!$Resource.shoppingCartMobile}" alt=""/>
+    </div>
+    <div class="onTop" onclick="{!c.onTop}">
+        <img src="{!$Resource.onTopArrow}" alt=""/>
+    </div> -->
+
+</aura:component>

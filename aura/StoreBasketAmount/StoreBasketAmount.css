@@ -1,0 +1,37 @@
+/**
+ * Created by vershov on 03.02.2020.
+ */
+
+.THIS {
+}
+
+.THIS .shipping-card__ico{
+    width: 30px;
+    height: 30px;
+}
+
+.THIS .shipping-card__title{
+    display: flex;
+}
+
+.THIS .shipping-card__name{
+    flex-grow: 1;
+    padding-left: 15px;
+    font-size: 20px;
+}
+
+.THIS.shipping-card{
+    height: 150px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    background: #fff;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+
+.THIS .shipping-card__amount,
+.THIS .shipping-card__price{
+    font-size: 16px;
+}

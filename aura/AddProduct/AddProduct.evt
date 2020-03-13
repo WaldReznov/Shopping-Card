@@ -1,0 +1,11 @@
+<aura:event type="APPLICATION" description="Event template">
+	
+    <aura:attribute name="name" type="String" />
+    <aura:attribute name="productId" type="String" />
+    <aura:attribute name="quantity" type="Double" />
+    <aura:attribute name="totalPrice" type="Double" />
+    <aura:attribute name="unitPrice" type="Double" />
+    <aura:attribute name="url" type="String"/>
+    <aura:attribute name="opportunityProductId" type="String" />
+
+</aura:event>

@@ -1,0 +1,81 @@
+/**
+ * Created by vershov on 31.01.2020.
+ */
+
+.THIS {
+    background: #f3f2f2;
+    border-radius: 5px;
+}
+
+.THIS .catalog{
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.THIS .pagination{
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+}
+
+.THIS.catalog__container{
+    padding: 0 20px;
+}
+
+.THIS .sort{
+    display: flex;
+    justify-content: space-between;
+}
+
+.THIS .sort__item{
+    display: flex;
+}
+
+.THIS .sort__item__item{
+    margin-left: 10px;
+}
+
+.THIS.onTop,
+.THIS.shoppingCart{
+    display: none;
+    position: fixed;
+    width: 48px;
+    bottom: 20px;
+    background: transparent;
+}
+
+.THIS.shoppingCart{
+    left: 20px;
+}
+
+.THIS.onTop{
+    right: 20px;
+}
+
+.THIS .pagination-action{
+    margin: 10px 0;
+}
+
+.THIS.mobile{
+    display: block;
+}
+
+@media screen and (max-width: 1185px) {
+    .THIS.onTop,
+    .THIS.shoppingCart{
+        display: block;
+    }
+}
+
+@media screen and (max-width: 560px) {
+    .THIS .search{
+        width: 100%;
+    }
+
+    .THIS .sort{
+        flex-direction: column;
+        align-items: center;
+    }
+}

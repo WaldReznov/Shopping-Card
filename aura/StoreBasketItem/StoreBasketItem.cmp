@@ -1,0 +1,37 @@
+<!--
+ - Created by vershov on 30.01.2020.
+ -->
+
+<aura:component description="StoreBasketItem" controller="StoreBasketItemController">
+
+    <aura:attribute name="name" type="String" />
+    <aura:attribute name="quantity" type="Double" />
+    <aura:attribute name="totalPrice" type="Double" />
+    <aura:attribute name="unitPrice" type="Double" />
+    <aura:attribute name="url" type="String"/>
+    <aura:attribute name="opportunityProductId" type="String" />
+
+    <div class="product">
+        <aura:if isTrue="{!v.url == undefined}">
+            <img src="{!$Resource.YellowWokap}" alt="" class="product__img"/>
+            <aura:set attribute="else">
+                <img src="{!v.url}" alt="" class="product__img"/>
+            </aura:set>
+
+        </aura:if>
+        <div class="product__container">
+            <p class="product__name">{!v.name}</p>
+            <p class="product__price">{!v.unitPrice}$</p>
+                <div class="product__quantity__container">
+                    <div class="count__decrease" onclick="{!c.decrease}">-</div>
+                    <div class="product__quantity">{!v.quantity} </div>
+                    <div class="count__increase" onclick="{!c.increase}">+</div>
+                </div>
+    
+                <div class="product__remove">
+                    <img src="{!$Resource.RemoveShoppingCard}" onclick="{!c.removeProduct}" class="product__remove__img" alt=""/>
+                </div>
+        </div>
+    </div>
+
+</aura:component>

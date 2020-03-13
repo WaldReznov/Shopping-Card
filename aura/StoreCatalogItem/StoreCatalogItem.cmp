@@ -1,0 +1,41 @@
+<!--
+  @File Name          : StoreCatalogItem.cmp
+  @Description        : 
+  @Author             : ChangeMeIn@UserSettingsUnder.SFDoc
+  @Group              : 
+  @Last Modified By   : ChangeMeIn@UserSettingsUnder.SFDoc
+  @Last Modified On   : 2/6/2020, 11:37:35 PM
+  @Modification Log   : 
+  Ver       Date            Author      		    Modification
+  1.0    2/6/2020   ChangeMeIn@UserSettingsUnder.SFDoc     Initial Version
+-->
+<aura:component description="StoreCatalogItem" controller="StoreCatalogItemController">
+
+    <aura:attribute name="pictureUrl" type="String" />
+    <aura:attribute name="productId" type="String" />
+    <aura:attribute name="opportunityId" type="String" />
+    <aura:attribute name="opportunityProductId" type="String" />
+    <aura:attribute name="name" type="String" />
+    <aura:attribute name="price" type="Decimal" />
+    <aura:attribute name="count" type="Integer" default="1"/>
+    <aura:attribute name="timerId" type="String" />
+
+    <aura:attribute name="accountId" type="String" />
+
+    <div class="product">
+        <img src="{!v.pictureUrl}" alt="" class="product__picture"/>
+        <p class="product__title">{!v.name}</p>
+        <p class="product__price">{!v.price}$</p>
+        <div class="product__action">
+            <div class="product__count__container">
+                <div class="count__decrease" onclick="{!c.decrease}">-</div>
+                <div class="product__count"> {!v.count} </div>
+                <div class="count__increase" onclick="{!c.increase}">+</div>
+            </div>
+            <div class="product__add">
+                <img src="{!$Resource.ShoppingCart}" class="product__add__img" alt="" onclick="{!c.addProduct}"/>
+            </div>
+        </div>
+    </div>
+
+</aura:component>

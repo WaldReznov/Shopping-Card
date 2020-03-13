@@ -1,0 +1,28 @@
+<!--
+ - Created by vershov on 30.01.2020.
+ -->
+
+<aura:component description="StoreBasket" controller="StoreBasketController">
+
+    <aura:attribute name="accountId" type="String" />
+    <aura:attribute name="products" type="List" />
+    <aura:attribute name="totalPrice" type="Double" />
+    <aura:attribute name="totalQuantity" type="Integer" />
+
+    <aura:handler event="c:StoreEvent" action="{!c.rerenderBasket}"/>
+    <aura:handler event="c:changeAmount" action="{!c.changeAmountAndPrice}"/>
+    <aura:handler event="c:AddProduct" action="{!c.addProduct}"/>
+    <aura:handler event="c:StoreInitializeComponent" action="{!c.doInit}"/>
+
+
+    <div class="shipping-cart">
+        <c:StoreBasketAmount accountId="{!v.accountId}" totalQuantity="{!v.totalQuantity}" totalPrice="{!v.totalPrice}"  />
+        <div class="shopping-cart__container">
+            <aura:iteration items="{!v.products}" var="item">
+                <aura:if isTrue="{!item.opportunityProductId != undefined}">
+                    <c:StoreBasketItem url="{!item.url}" opportunityProductId="{!item.opportunityProductId}" unitPrice="{!item.unitPrice}" quantity="{!item.quantity}" name="{!item.name}"/>
+                </aura:if>
+        </aura:iteration>
+        </div>
+    </div>
+</aura:component>

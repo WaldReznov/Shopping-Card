@@ -1,0 +1,10 @@
+<!--
+ - Created by vershov on 04.02.2020.
+ -->
+
+<aura:documentation>
+    <aura:description>Documentation for StoreBasketAmount</aura:description>
+    <aura:example name="StoreBasketAmount" ref="StoreBasketAmount" label="StoreBasketAmount">
+        Example for StoreBasketAmount
+    </aura:example>
+</aura:documentation>

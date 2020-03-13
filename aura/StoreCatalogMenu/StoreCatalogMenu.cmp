@@ -1,0 +1,25 @@
+<!--
+ - Created by vershov on 30.01.2020.
+ -->
+
+<aura:component description="StoreCatalogMenu">
+
+    <aura:attribute name="menu" type="Object" />
+    <aura:attribute name="selectedMenu" type="String" />
+    <aura:attribute name="changeType" type="Aura.Action" />
+    <aura:attribute name="activeMenuItem" type="Integer" />
+    <!-- <aura:handler name="init" value="{!this}" action="{!c.doInit}"/> -->
+
+    <aura:method name="changeCatalog" action="{!v.changeType}">
+        <aura:attribute name="type" type="String" />
+    </aura:method>
+
+    <div class="nav" aura:id="nav">
+        <lightning:select aura:id="menu" name="select" label="Select a Color" onchange="{!c.sendToParent}" value="{!v.selectedMenu}" >
+            <aura:iteration items="{!v.menu}" var="menuItem" indexVar="menuIndex">
+                <option value="{!menuItem.name}" text="{!menuItem.name}" selected="{!menuItem.selected}"></option>
+            </aura:iteration>
+        </lightning:select>
+    </div>
+
+</aura:component>

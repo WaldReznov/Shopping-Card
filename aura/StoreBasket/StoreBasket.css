@@ -1,0 +1,23 @@
+/**
+ * Created by vershov on 31.01.2020.
+ */
+
+.THIS {
+    background: #f3f2f2;
+    border-radius: 5px;
+    padding: 2%;
+    width: 450px;
+}
+
+.THIS.shipping-cart{
+    border-radius: 5px;
+    height: 90vh;
+    overflow: auto;
+}
+
+@media screen and (max-width: 586px) {
+    .THIS.shipping-cart{
+        width: 320px;
+        margin: 0 auto;
+    }
+}

@@ -1,0 +1,25 @@
+<!--
+ - Created by vershov on 30.01.2020.
+ -->
+
+<aura:component description="StoreBasketAmount" controller="StoreBasketAmountController">
+
+    <aura:attribute name="accountId" type="String" />
+    <aura:attribute name="totalQuantity" type="Integer" />
+    <aura:attribute name="totalPrice" type="Decimal" />
+
+
+    <div class="shipping-card">
+        <div class="shipping-card__title">
+            <img src="{!$Resource.ShoppingCart}" class="shipping-card__ico" alt=""/>
+            <p class="shipping-card__name">Корзина</p>
+            <lightning:button variant="brand" class="shipping-card__action" label="Оформить" onclick="{! c.changeStatus }" />
+        </div>
+
+        <div class="shipping-card-numbers">
+            <p class="shipping-card__amount">Всего ({!v.totalQuantity}ед.)</p>
+            <p class="shipping-card__price">Общая стоимость: {!v.totalPrice}$</p>
+        </div>
+    </div>
+
+</aura:component>
